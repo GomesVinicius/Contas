@@ -21,15 +21,19 @@ const Home = () => {
     }*/
 
     async function save() {
-        const body = {
-            name: name,
-            value: value
+
+        if(name != '' && (value != 0 || value )) {
+            const body = {
+                name: name,
+                value: value
+            }
+            await firebaseDatabase.push(body)
+
+            Alert.alert('Enviado com sucesso')
+            await query()
+        } else {
+            Alert.alert('Insira os dados corretamente')
         }
-        await firebaseDatabase.push(body)
-
-        Alert.alert('Enviado com sucesso')
-        await query()
-
     }
 
     useEffect(() => {
@@ -60,9 +64,10 @@ const Home = () => {
         })
     }
 
-    function exclude(index){
+    async function exclude(index){
         firebaseDatabase.child(key[0][index]).remove()
-        query()
+        await query()
+        Alert.alert('Registro Excluído')
     }
 
     return (
