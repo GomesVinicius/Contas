@@ -16,9 +16,12 @@ const Home = () => {
 
     const navigation = useNavigation()
 
-    /*function handleToGraphics() {
-        navigation.navigate('Graphics')
-    }*/
+    async function handleToGraphics() {
+        await query()
+        navigation.navigate('Graphics', {
+            value: data
+        })
+    }
 
     async function save() {
 
@@ -40,11 +43,11 @@ const Home = () => {
         query()
     }, [])
 
-    function query() {
+    async function query() {
         var childData = []
         var childKey = []
 
-        firebaseDatabase.once('value', function (snapshot) {
+        await firebaseDatabase.once('value', function (snapshot) {
             snapshot.forEach(function(childSnapshot) {
                 childKey.push(childSnapshot.key.toString())
                 childData.push(childSnapshot.val())
@@ -97,10 +100,7 @@ const Home = () => {
                 >
                 <RectButton
                         style={Styles.buttonNavigate}
-                        onPress={() => {navigation.navigate('Graphics', {
-                            value: data
-                        })}
-                    }
+                        onPress={handleToGraphics}
                     >
                         <Text style={Styles.textButton}>Gráfico</Text>
                     </RectButton>
@@ -125,7 +125,7 @@ const Home = () => {
                             <Text style={Styles.textValues}>{item.name}</Text>
                             <Text style={Styles.textValues}>|</Text>
                             <Text style={Styles.text}>Valor: </Text>
-                            <Text style={Styles.textValues}>{item.value}</Text>
+                            <Text style={Styles.textValues}>R$ {item.value}</Text>
                             <RectButton
                                 style={Styles.buttonExclude}
                                 onPress={() => exclude(index)}
