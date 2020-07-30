@@ -11,13 +11,16 @@ const Styles = StyleSheet.create({
         flexDirection: 'row'
     },
     title: {
+        marginLeft: 4,
         fontSize: 18,
         color: '#000'
     },
     input: {
+        marginLeft: 4,
         fontSize: 16
     },
     text: {
+        marginLeft: 4,
         fontSize: 16,
         fontWeight: '600'
     },
@@ -34,6 +37,7 @@ const Styles = StyleSheet.create({
         overflow: 'hidden',
         alignItems: 'center',
         marginTop: 8,
+        marginLeft: 4,
     },
     buttonExclude: {
         backgroundColor: '#FF0000',
@@ -46,6 +50,7 @@ const Styles = StyleSheet.create({
         alignItems: 'center',
         alignContent: 'flex-end',
         marginTop: 8,
+        marginRight: 4
     },
     buttonSave: {
         backgroundColor: '#34CB79',
@@ -56,6 +61,7 @@ const Styles = StyleSheet.create({
         overflow: 'hidden',
         alignItems: 'center',
         marginTop: 8,
+        marginRight: 4,
     },
     textButton: {
         flex: 1,
